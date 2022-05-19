@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+:root {
+  --main-primary-color: #07193f;
+  --main-secondary-color: #fdee16;
+  --main-light-color: #fff;
+  --main-grey-color: #d1d1d1;
+  --main-dark-color: #000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 9px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-dark-color);
+  border-radius: 10rem;
+  border: 1px solid var(--main-primary-color);
+}
+
+::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+}
+
+.navbar-img {
+  height: 50px;
+}
+
+/*HeaderCover*/
+
+#headerCover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#headerCover .masthead {
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: calc(100vh - 124px);
+  position: relative;
+  
+}
+
+@media (min-width: 768px) {
+  #headerCover .masthead p {
+    font-size: 1.15rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media (min-width: 992px) {
+  #headerCover .masthead {
+    height: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+/*End of HeaderCover*/
+#particles {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.my-list {
+  width: 100%;
+  background-color: var(--main-light-color);
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.my-list-item {
+  width: 100%;
+  background-color: var(--main-light-color);
+  padding: 10px;
+
+}
+
+.my-list-item:hover {
+  background-color: var(--main-grey-color);
+}
+
+.my-nav-button{
+  margin: 10px;
 }
