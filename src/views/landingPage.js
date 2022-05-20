@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import HeaderCover from "../components/headerCover";
 import StickyFooter from "../components/footer";
-import Gator from "../assets/images/croc.png";
+import Gator from "../assets/images/logo512.png";
 
 
 
