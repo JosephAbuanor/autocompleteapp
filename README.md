@@ -1,3 +1,5 @@
+# Simple React App for implementing Search Suggestions using react-search-autocomplete (https://github.com/sickdyd/react-search-autocomplete)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
