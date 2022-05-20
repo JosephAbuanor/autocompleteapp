@@ -5,9 +5,7 @@ import Typography from '@mui/material/Typography';
 import { Row } from 'react-bootstrap'
 import SearchTextField from './searchTextField';
 
-
 const useStyles = makeStyles((theme) => ({
-
 
     paper: {
         padding: theme.spacing(5),
@@ -17,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SearchComponent(props) {
+function SearchComponent() {
 
     const classes = useStyles();
 

@@ -6,7 +6,6 @@ import Container from "@material-ui/core/Container";
 import Particles from "react-particles-js";
 import SearchComponent from "./searchComponent";
 
-
 function HeaderCover() {
 
     return (
