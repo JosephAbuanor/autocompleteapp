@@ -30,7 +30,7 @@ function SearchComponent() {
                     <SearchTextField />
                 </Row>
                 <Typography >
-                   <code style={{ color: 'grey', margin: '15px' }}>| Type to begin searching (eg. mailvestigator@mail.com ) |</code>
+                   <code style={{ color: 'grey', margin: '15px' }}>| Type to begin searching (eg. Java ) |</code>
                 </Typography>
             </Paper>
         </div>
