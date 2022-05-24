@@ -6,30 +6,32 @@ import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
 import api from "../configs/http-common";
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 
 
 
-function SearchTextField2(props) {
+
+function SearchTextField2() {
     const [response, setResponse] = useState([])
-    const [searchTerm, setSearchTerm] = useState(null)
-    const [page, setPage] = React.useState(1);
-    const handleChange = () => {
-        setPage();
+    const [searchTerm, setSearchTerm] = useState("")
+
+    const handleChange = (element) => {
+        if (element.target.value !== null || element.target.value !== "") {
+            setSearchTerm(element.target.value)
+        }
     };
-    async function fetchData(element) {
-        element.target.value !== null ? setSearchTerm(element.target.value)
-            : setSearchTerm(null)
 
-        const dataObject = await api.get("/auto/" + searchTerm);
-        setResponse(dataObject.data.found.rows);
-        console.log(dataObject.data.found.rows);
+    React.useEffect(() => {
 
-    }
+        async function fetchData() {
+            const dataObject = await api.get("/auto/1/" + searchTerm);
+            setResponse(dataObject.data.found.data);
+        }
 
+        fetchData();
+    }, [searchTerm])
 
     return (
         <div>
@@ -38,9 +40,9 @@ function SearchTextField2(props) {
                 sx={{ display: 'flex', alignItems: 'center', width: '100%', border: '2px solid green' }}>
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}
-                    placeholder="Search Email"
-                    inputProps={{ 'aria-label': 'search email' }}
-                    onChange={fetchData}
+                    placeholder="Search"
+                    inputProps={{ 'aria-label': 'search' }}
+                    onChange={handleChange}
                 />
                 <IconButton type="submit" sx={{ height: 50, p: '10px' }} aria-label="search">
                     <SearchIcon />
@@ -49,17 +51,28 @@ function SearchTextField2(props) {
             </Paper>
             {response.length > 0 ? <List className="my-list">
                 {response.map((value) => (
+
                     <ListItem
                         className="my-list-item"
                         key={value.id}
                         disableGutters
                         secondaryAction={
-                            <IconButton>
-                                <MenuIcon />
-                            </IconButton>
+                            <>
+                                <IconButton>
+                                    <VisibilityIcon />
+                                </IconButton>
+                                <IconButton>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </>
                         }
                     >
-                        <ListItemText primary={value.email} />
+                        <div>
+                            <span>{value.email}</span>
+                            <br />
+                            {value.name}, {value.age}, {value.hospital}
+                        </div>
+
                     </ListItem>
                 ))}
             </List> :
@@ -69,7 +82,7 @@ function SearchTextField2(props) {
                     <ListItemText secondary="No results found" />
                 </ListItem>
             }
-            <div style={{ background: "white" }}>
+            {/* <div style={{ background: "white" }}>
                 <Stack spacing={2} >
                     <Pagination
                         color="primary"
@@ -77,7 +90,7 @@ function SearchTextField2(props) {
                         page={page} onChange={handleChange}
                     />
                 </Stack>
-            </div>
+            </div> */}
         </div>
     );
 }
