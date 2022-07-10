@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+// import ListItemText from '@mui/material/ListItemText';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 import api from "../configs/http-common";
@@ -15,22 +15,21 @@ import api from "../configs/http-common";
 
 function SearchTextField2() {
     const [response, setResponse] = useState([])
-    const [searchTerm, setSearchTerm] = useState("")
+    const [searchTerm, setSearchTerm] = useState()
 
     const handleChange = (element) => {
-        if (element.target.value !== null || element.target.value !== "") {
-            setSearchTerm(element.target.value)
-        }
+        setSearchTerm(element.target.value)
     };
 
-    React.useEffect(() => {
 
+
+    React.useEffect(() => {
         async function fetchData() {
-            const dataObject = await api.get("/auto/1/" + searchTerm);
+            const dataObject = await api.get("/auto-single/1/" + searchTerm);
             setResponse(dataObject.data.found.data);
         }
 
-        fetchData();
+        fetchData()
     }, [searchTerm])
 
     return (
@@ -75,22 +74,14 @@ function SearchTextField2() {
 
                     </ListItem>
                 ))}
-            </List> :
-                <ListItem
-                    className="my-list-item"
-                >
-                    <ListItemText secondary="No results found" />
-                </ListItem>
+            </List> : 0
+                // <ListItem
+                //     className="my-list-item"
+                // >
+                //     <ListItemText secondary="No results found" />
+                // </ListItem>
             }
-            {/* <div style={{ background: "white" }}>
-                <Stack spacing={2} >
-                    <Pagination
-                        color="primary"
-                        count={10}
-                        page={page} onChange={handleChange}
-                    />
-                </Stack>
-            </div> */}
+
         </div>
     );
 }
